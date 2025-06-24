@@ -56,26 +56,11 @@
       .logo {
         font-size: 1.8rem;
         font-weight: bold;
-        color: #ff4444;
+        color: #ff4444 !important;
         text-decoration: none;
       }
 
-      .nav-menu {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-
-      .nav-menu a {
-        color: #fff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        font-weight: 500;
-      }
-
-      .nav-menu a:hover {
-        color: #ff4444;
-      }
+     
 
       /* Hero Section */
       .hero {
@@ -405,24 +390,107 @@
         height: 100%;
         object-fit: cover; /* Cubre todo el div sin deformarse */
       }
+
+
+
+      
+  #navbar {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        font-size: 20;
+        padding: 30px 90px;
+        margin: 0 auto;
+      }
+
+      #navbar a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: 500;
+      }
+
+      #navbar a:hover {
+        color: #ff4444;
+      }
+
+
+
+      /* Estilo base */
+#navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+
+/* Oculta botón en escritorio */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+    font-size: 50px;
+  }
+
+
+  #navbar ul {
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    display: none; /* Oculto por defecto */
+    z-index: 1000;
+    padding: 20px 30px;
+  }
+
+  #navbar ul.active {
+    display: flex;
+  }
+  
+  #navbar ul a:hover {
+  color: orange;
+  }
+
+  .contenedor-video {
+    display: none;
+  }
+}
+
     </style>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar" style="background: rgba(0, 0, 0, 0.9)">
-      <div class="nav-container">
-        <a href="#" class="logo">EvilTeam</a>
-        <ul class="nav-menu">
-          <li><a href="#inicio">Inicio</a></li>
+    <button id="menu-toggle" class="hamburger">&#9776;</button>
+
+<!-- Menú de navegación -->
+<nav id="navbar">
+  <a href="#" class="logo">EvilTeam</a>
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
           <li><a href="#sobre-nosotros">Nosotros</a></li>
           <li><a href="#miembros">Miembros</a></li>
           <li><a href="#galeria">Galería</a></li>
           <li><a href="#stats">Stats</a></li>
           <li><a href="#reto">Rétanos</a></li>
           <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-    </nav>
+  </ul>
+</nav>
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
@@ -804,6 +872,13 @@
           // Reset form
           this.reset();
         });
-    </script>
+
+        const toggleBtn = document.getElementById('menu-toggle');
+  const navMenu = document.querySelector('#navbar ul');
+
+  toggleBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
   </body>
 </html>
